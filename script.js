@@ -1,9 +1,5 @@
-
-
+// Globális változó az aktuális növény tárolásához
 let aktualisNoveny = "";
-
-	    
-
 
 const novenyAdatok = {
     // SZÉNHIDRÁTOK
@@ -129,40 +125,23 @@ const novenyAdatok = {
     "Colchici semen": { magyardrog: "Őszi kikerics mag", latin: "Colchicum autumnale", csalad: "Colchicaceae", kep: "Colchici_semen.jpg" }
 };
 
-	    
-
-
-    let eredmeny = "<strong>Eredmények:</strong><br>";
-    
-    // Képek ellenőrzése
-    valaszSelects.forEach((select, index) => {
-        const valasz = select.value;
-        const helyes = helyesValaszok[index];
-        const isCorrect = valasz === helyes;
-        
-        eredmeny += `Kép ${index+1}: ${isCorrect ? "✔️" : `❌ (helyes: ${helyes})`}<br>`;
-    });
-
-
-
-	
-
+// Menük megjelenítése
 function showSubMenu(type) {
-    // Minden elem elrejtése
-    const availableMenus = ['novenyfelismeres', 'kepletek', 'tabla'];
-    
-    if (!availableMenus.includes(type)) {
-        console.log("Ez a menüpont ideiglenesen nem elérhető");
-        return;
-    }
+    // Alaphelyzetbe állítás (elrejtés)
     document.getElementById("mainMenu").style.display = "none";
-   
-    document.getElementById("makroszkopikus-container").style.display = "none"
-	
-    document.getElementById(type + "SubMenu").style.display = "block";
+    
+    const possibleMenus = ['novenyfelismeres', 'tabla'];
+    possibleMenus.forEach(menu => {
+        const el = document.getElementById(menu + "SubMenu");
+        if (el) el.style.display = "none";
+    });
+    
+    document.getElementById("makroszkopikus-container").style.display = "none";
+
+    // Kiválasztott menü megjelenítése
+    const target = document.getElementById(type + "SubMenu");
+    if (target) target.style.display = "block";
 }
-
-
 
 // Makroszkópikus játék indítása
 function startMakroszkopikusJatek() {
@@ -171,73 +150,46 @@ function startMakroszkopikusJatek() {
     ujNoveny();
 }
 
-// Új növény betöltése
+// Új növény betöltése véletlenszerűen
 function ujNoveny() {
     const novenyNevek = Object.keys(novenyAdatok);
     aktualisNoveny = novenyNevek[Math.floor(Math.random() * novenyNevek.length)];
+    
+    // Kép beállítása a MAKRO mappából
     document.getElementById("noveny-kep").src = "MAKRO/" + novenyAdatok[aktualisNoveny].kep;
-    document.getElementById("magyar-drog").value = "";
-    document.getElementById("latin-drog").value = "";
-    document.getElementById("latin-noveny").value = "";
-    document.getElementById("csalad-noveny").value = "";
+    
+    // Input mezők és eredmény törlése
+    const inputs = ["magyar-drog", "latin-drog", "latin-noveny", "csalad-noveny"];
+    inputs.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = "";
+    });
     document.getElementById("noveny-eredmeny").innerHTML = "";
 }
 
-// Ellenőrzés
+// Ellenőrzés funkció
 function checkNoveny() {
     const elvart = novenyAdatok[aktualisNoveny];
+    
     const valaszok = {
         magyar: document.getElementById("magyar-drog").value.trim(),
         latinDrog: document.getElementById("latin-drog").value.trim(),
-        latin: document.getElementById("latin-noveny").value.trim(),
+        latinNoveny: document.getElementById("latin-noveny").value.trim(),
         csalad: document.getElementById("csalad-noveny").value.trim()
     };
 
-    let eredmeny = "<strong>Eredmények:</strong><br>";
-    
-    function checkField(userAnswer, correctAnswer, fieldName) {
-        const isCorrect = userAnswer.toLowerCase() === correctAnswer.toLowerCase();
-        return `${fieldName}: ${isCorrect ? "✔️" : `❌ (helyes: ${correctAnswer})`}<br>`;
+    let eredmenyHTML = "<strong>Eredmények:</strong><br>";
+
+    // Segédfüggvény az összehasonlításhoz (kis- és nagybetű nem számít)
+    function checkField(userVal, correctVal, label) {
+        const isCorrect = userVal.toLowerCase() === correctVal.toLowerCase();
+        return `${label}: ${isCorrect ? "✔️" : `❌ (helyes: ${correctVal})`}<br>`;
     }
 
-    eredmeny += checkField(valaszok.magyar, elvart.magyardrog, "Magyar név");
-    eredmeny += checkField(valaszok.latinDrog, aktualisNoveny, "Drog latin neve");
-    eredmeny += checkField(valaszok.latin, elvart.latin, "Latin név");
-    eredmeny += checkField(valaszok.csalad, elvart.csalad, "Család");
+    eredmenyHTML += checkField(valaszok.magyar, elvart.magyardrog, "Magyar drog");
+    eredmenyHTML += checkField(valaszok.latinDrog, aktualisNoveny, "Drog latin neve");
+    eredmenyHTML += checkField(valaszok.latinNoveny, elvart.latin, "Latin növénynév");
+    eredmenyHTML += checkField(valaszok.csalad, elvart.csalad, "Család");
 
-    document.getElementById("noveny-eredmeny").innerHTML = eredmeny;
+    document.getElementById("noveny-eredmeny").innerHTML = eredmenyHTML;
 }
-       
-        
-
-     
-    
-    // Input mezők ürítése
-    const inputsToClear = [
-        "name-input",
-        "name-output",
-        "magyar-drog",
-        "latin-drog",
-        "latin-noveny",
-        "csalad-noveny",
-        "noveny-eredmeny",
-        "mikro-eredmeny"
-    ];
-    
-    inputsToClear.forEach(id => {
-        const element = document.getElementById(id);
-        if (element) element.value = "";
-        if (element && element.innerHTML) element.innerHTML = "";
-    });
-}
-        
-        
-
-        function newMolecule() {
-            const moleculeNames = Object.keys(molekulaAdatok);
-            currentMolecule = moleculeNames[Math.floor(Math.random() * moleculeNames.length)];
-            document.getElementById("molekula-name").innerText = currentMolecule;
-        }
-
-
-	    
