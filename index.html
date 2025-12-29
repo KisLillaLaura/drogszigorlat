@@ -3,30 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmakognózia Tanuló Program</title>
+    <title>Gyógynövény Ismeret - Játék</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="container">
-        <h1>Gyógynövény Ismeret</h1>
+        <h1>Gyógynövény Felismerés</h1>
 
-        <div id="mainMenu" class="menu-box">
-            <button onclick="showSubMenu('novenyfelismeres')">Növényfelismerés Játék</button>
-            <button onclick="showSubMenu('tabla')">Adattáblázat megtekintése</button>
-        </div>
-
-        <div id="novenyfelismeresSubMenu" class="menu-box" style="display: none;">
-            <button onclick="startMakroszkopikusJatek()">Makroszkópikus felismerés indítása</button>
-            <button onclick="location.reload()">Vissza a főmenübe</button>
-        </div>
-
-        <div id="tablaSubMenu" class="menu-box" style="display: none;">
-            <p>Itt jelenne meg a táblázat...</p>
-            <button onclick="location.reload()">Vissza a főmenübe</button>
-        </div>
-
-        <div id="makroszkopikus-container" class="game-container" style="display: none;">
+        <div id="makroszkopikus-container" class="game-container">
             <div class="image-wrapper">
                 <img id="noveny-kep" src="" alt="Gyógynövény drog">
             </div>
@@ -34,26 +19,25 @@
             <div class="input-grid">
                 <div class="form-group">
                     <label for="magyar-drog">Magyar drog neve:</label>
-                    <input type="text" id="magyar-drog" autocomplete="off">
+                    <input type="text" id="magyar-drog" autocomplete="off" placeholder="pl. Levendulavirág">
                 </div>
                 <div class="form-group">
                     <label for="latin-drog">Drog latin neve:</label>
-                    <input type="text" id="latin-drog" autocomplete="off">
+                    <input type="text" id="latin-drog" autocomplete="off" placeholder="pl. Lavandulae flos">
                 </div>
                 <div class="form-group">
                     <label for="latin-noveny">Latin növénynév:</label>
-                    <input type="text" id="latin-noveny" autocomplete="off">
+                    <input type="text" id="latin-noveny" autocomplete="off" placeholder="pl. Lavandula angustifolia">
                 </div>
                 <div class="form-group">
                     <label for="csalad-noveny">Család:</label>
-                    <input type="text" id="csalad-noveny" autocomplete="off">
+                    <input type="text" id="csalad-noveny" autocomplete="off" placeholder="pl. Lamiaceae">
                 </div>
             </div>
 
             <div class="action-buttons">
                 <button class="check-btn" onclick="checkNoveny()">Ellenőrzés</button>
                 <button class="next-btn" onclick="ujNoveny()">Következő növény</button>
-                <button class="back-btn" onclick="location.reload()">Kilépés</button>
             </div>
 
             <div id="noveny-eredmeny" class="result-box"></div>
