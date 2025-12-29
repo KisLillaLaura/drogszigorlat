@@ -155,8 +155,8 @@ function ujNoveny() {
     const novenyNevek = Object.keys(novenyAdatok);
     aktualisNoveny = novenyNevek[Math.floor(Math.random() * novenyNevek.length)];
     
-    // Kép beállítása a MAKRO mappából
-    document.getElementById("noveny-kep").src = "MAKRO/" + novenyAdatok[aktualisNoveny].kep;
+    // Kép beállítása a makroszkopos_drogok mappából
+    document.getElementById("noveny-kep").src = "makroszkopos_drogok/" + novenyAdatok[aktualisNoveny].kep;
     
     // Input mezők és eredmény törlése
     const inputs = ["magyar-drog", "latin-drog", "latin-noveny", "csalad-noveny"];
