@@ -14,7 +14,7 @@ const novenyAdatok = {
     "Plantaginis lanceolatae folium": { csoport: "Szénhidrátok", magyardrog: "Lándzsás útifű levél", latin: "Plantago lanceolata", csalad: "Plantaginaceae", kep: "Plantaginis_lanceolatae_folium.jpg" },
     "Psyllii semen": { csoport: "Szénhidrátok", magyardrog: "Egyiptomi útifűmag", latin: "Plantago afra", csalad: "Plantaginaceae", kep: "Psyllii_semen.jpg" },
     "Salviae hispanicae semen": { csoport: "Szénhidrátok", magyardrog: "Aztékzsályamag (Chia)", latin: "Salvia hispanica", csalad: "Lamiaceae", kep: "Salviae_hispanicae_semen.jpg" },
-    "Taraxaci officinalis radix": { csoport: "Szénhidrátok", magyardrog: "Pongyola pitypang gyökér", latin: "Taraxacum officinale", csalad: "Asteraceae", kep: "Taraxaci_officinalis_radix.jpg" },
+    "Taraxaci radix": { csoport: "Szénhidrátok", magyardrog: "Pongyola pitypang gyökér", latin: "Taraxacum officinale", csalad: "Asteraceae", kep: "Taraxaci_radix.jpg" },
     "Tiliae flos": { csoport: "Szénhidrátok", magyardrog: "Hársfavirág", latin: "Tilia cordata / platyphyllos", csalad: "Malvaceae", kep: "Tiliae_flos.jpg" },
     "Tragacantha": { csoport: "Szénhidrátok", magyardrog: "Tragakanta", latin: "Astragalus gummifer", csalad: "Fabaceae", kep: "Tragacantha.jpg" },
     "Trigonellae foenugraeci semen": { csoport: "Szénhidrátok", magyardrog: "Görögszénamag", latin: "Trigonella foenum-graecum", csalad: "Fabaceae", kep: "Trigonellae_foenugraeci_semen.jpg" },
